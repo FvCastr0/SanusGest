@@ -1,0 +1,35 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0",
+    "prisma": "^6.1.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.1.0",
+    "fastify": "^5.2.0",
+    "module-alias": "^2.2.3",
+    "mongodb": "^6.12.0"
+  },
+  "_moduleAliases": {
+    "@controllers": "dist/controllers",
+    "@services": "dist/services",
+    "@interfaces": "dist/interfaces",
+    "@middlewares": "dist/middlewares",
+    "@routes": "dist/routes"
+  }
+}

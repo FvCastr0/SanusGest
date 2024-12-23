@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Patient {
+  id                      String                       @id @default(uuid()) @map("_id")
+  name                    String                       @unique
+  CPF                     String                       @unique
+  birthday                Int
+  address                 String
+  phone                   Int
+  email                   String
+  healthPlanNumber        Int
+  gender                  Gender
+  medicalHistory          MedicalHistoryTypes
+  ElectronicMedicalRecord ElectronicMedicalRecordTypes
+}
+
+model Employeer {
+  id       String @id @default(uuid()) @map("_id")
+  name     String @unique
+  email    String @unique
+  phone    Int
+  password String
+  role     Role
+}
+
+enum Role {
+  Employee
+  Doctor
+  Manager
+}
+
+enum Gender {
+  Masculino
+  Feminino
+  Outro
+}
+
+type MedicalHistoryTypes {
+  allergies   String[]
+  illnesses   String[]
+  surgeries   Surgeries[]
+  medications Medications[]
+}
+
+type ElectronicMedicalRecordTypes {
+  queries          Queries[]
+  exams            Exams[]
+  hospitalizations Hospitalizations[]
+}
+
+type Exams {
+  doctor   String
+  date     String
+  result   String
+  typeExam String
+}
+
+type Surgeries {
+  date String
+  type String
+}
+
+type Medications {
+  prescription String
+  date         String
+  doctor       String
+}
+
+type Queries {
+  doctor      String
+  date        String
+  observation String
+}
+
+type Hospitalizations {
+  date   String
+  reason String
+}
