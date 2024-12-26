@@ -19,9 +19,11 @@ class CreateEmployer {
       role !== 'Doutor' &&
       role !== 'Gerente' &&
       role !== 'Funcionario'
-    ) return rep.code(400).send({ msg: "Cargo não existente!" })
+    ) return rep.code(400).send({ msg: "Cargo inexistente!" })
 
-    const create = await createEmployerService.execute({ name, email, password: hashSync(password, 10), phone, role })
+    const hashedPassword = hashSync(password, 10)
+
+    const create = await createEmployerService.execute({ name, email, password: hashedPassword, phone, role })
 
     return rep.code(create.status).send({ msg: create.msg })
   }
