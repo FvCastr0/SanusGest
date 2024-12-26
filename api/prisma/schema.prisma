@@ -21,7 +21,7 @@ model Patient {
   ElectronicMedicalRecord ElectronicMedicalRecordTypes
 }
 
-model Employeer {
+model Employer {
   id       String @id @default(uuid()) @map("_id")
   name     String @unique
   email    String @unique
@@ -31,9 +31,9 @@ model Employeer {
 }
 
 enum Role {
-  Employee
-  Doctor
-  Manager
+  Funcionario
+  Doutor
+  Gerente
 }
 
 enum Gender {
